@@ -1,14 +1,15 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-
+import os
 db = SQLAlchemy()
 
 
 def create_app():
+    file_path = os.path.abspath(os.getcwd()) + "C:/Users/amuls/PycharmProjects/To-Do App/instance/database.db"
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'Always Be Honest'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/amuls/PycharmProjects/To-Do App/instance/database.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+file_path
     db.init_app(app)
 
     from .views import views

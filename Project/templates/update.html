@@ -3,15 +3,15 @@
 {% block content %}
 
     <div class="container my-3">
-        <h2>Update Todo</h2>
+        <h2 align="center">Update Todo </h2>
         <form action="/update/{{note.id}}" method="POST">
             <div align="center">
                 <label for="note" class="form-lable">Note Description</label>
-                <textarea name="note" id="note" class="form-control" value="{{note.value}}"
+                <textarea name="note" id="note" class="form-control" value="{{note.data}}"
                       style="background-color:#FFF5EE"></textarea>
             </div>
             <div align="center">
-            <button type="submit" class="btn btn-dark">Update</button>
+            <button type="submit" class="btn btn-dark" style="margin-top: 3rem">Update</button>
             </div>
         </form>
     </div>

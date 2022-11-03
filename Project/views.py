@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
@@ -41,8 +41,8 @@ def update(id):
             flash('Note is too short', category='error')
         else:
             note = Note.query.filter_by(id=id).first()
-            new_note = Note(data=note, user_id=current_user.id)
-            db.session.add(new_note)
+            note.note = note
+            db.session.add(note)
             db.session.commit()
             flash('Note Added', category='success')
             return redirect('/')
